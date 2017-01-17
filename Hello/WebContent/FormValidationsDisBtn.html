@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app= angular.module('myApp',[])
+	app.controller('myController',['$scope', function($scope){
+		
+	
+	
+	}])
+
+</script>
+
+</head>
+<body>
+
+<form name="myForm" ng-app="myApp" ng-controller="myController">
+	<div >
+		
+		<p>
+		First Name: <input type="text" name="fname" ng-model="fname" required/>
+		<span style="color: red;">
+			<span ng-show="myForm.fname.$error.required">First Name is required</span>
+		</span>
+		</p>
+		<p>
+		Last Name:  <input type="text" name="lname" ng-model="lname" required/>
+		<span style="color: red;">
+			<span ng-show="myForm.lname.$error.required"/>Last Name is required</span>
+		</span>
+		</p>
+		
+		<p>
+		Email:  	<input type="email" name="email" ng-model="email" required/>
+		<span style="color: red;">
+			<span ng-show="myForm.email.$error.required"/>Email is required</span>
+			<span ng-show="myForm.email.$error.email"/>Email is invalid</span>
+		</span>
+		</p>
+		<br/><br/>
+		
+		<button ng-Disabled="myForm.fname.$error.required||myForm.lname.$error.required||myForm.email.$error.required||myForm.email.$error.email">Submit</button>
+	
+	</div>
+</form>
+
+</body>
+</html>
