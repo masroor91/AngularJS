@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script src="lib/angular.min.js"></script>
+<script type="text/javascript">
+	var app= angular.module('myApp',[])
+	app.controller('myController',['$scope',function($scope){
+		
+		$scope.setButton= function() {
+			 $scope.flag=!$scope.flag;
+		};
+		
+	}])
+
+
+</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController" ng-init="flag=true">
+		<pre>
+			<input type="checkbox" ng-click="setButton()"/>I accept the Terms and Conditions
+			<button ng-disabled="flag" ng-click="">Submit</button>
+		</pre>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript">
+	var app= angular.module('myApp',[])
+	app.controller('myController',['$scope', function($scope){
+		
+		$scope.flag=false;
+		$scope.btnValue="Show"
+		$scope.setVisibilty= function(){
+			$scope.flag=!$scope.flag;
+			
+			if ($scope.flag==true){
+				$scope.btnValue="Hide";
+			}
+			else{
+				$scope.btnValue="Show";
+			}
+		};
+		
+		$scope.clear= function(){
+			$scope.fname="";
+			$scope.lname="";
+		};
+		
+	}])
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+	
+		<button ng-click="setVisibilty()">{{btnValue}}</button>
+		<pre ng-show="flag">
+		FirstName: <input type="text" ng-model="fname"/>
+		LastName:  <input type="text" ng-model="lname"/><br/><br/>
+		
+		Welcome Mr. {{fname+" "+lname}} !!
+		
+		<button ng-click="clear()">Clear</button>
+		</pre>
+	</div>
+
+
+</body>
+</html>

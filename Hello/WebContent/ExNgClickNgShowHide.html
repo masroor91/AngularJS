@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app = angular.module('myApp', [])
+	
+	app.controller('myController',['$scope', function($scope) {
+		$scope.flag=true;
+		$scope.btnValue="Hide";
+		$scope.setVisibility= function () {
+			$scope.flag=!$scope.flag;
+			if ($scope.flag==true){
+				$scope.btnValue="Hide";
+			}
+			else{
+				$scope.btnValue="Show";
+			}
+			
+			
+		};
+	}]);
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<p ng-show="flag">I am visible</p>
+		<button ng-click="setVisibility()">{{btnValue}}</button>
+	</div>
+
+
+</body>
+</html>
