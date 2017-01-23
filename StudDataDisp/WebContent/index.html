@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Data</title>
+ <style>
+         table, th , td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+         }
+         
+         table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+         }
+         
+         table tr:nth-child(even) {
+            background-color: #ffffff;
+         }
+    </style>
+      
+    <script src="lib/angular.min.js"></script>
+    
+    <script src="stujs.js">
+    </script>  
+
+</head>
+<body>
+	<h1><marquee>Angular JS Application to Display JSON Data</marquee></h1>
+	<div ng-app="myApp" ng-controller="stuController">
+		<table>
+			<caption>Enter the Details</caption>
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" ng-model="fname" name="fname"> </td>
+			
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" ng-model="lname" name="lname"> </td>
+			
+			</tr>
+		
+		</table>
+		<br/>
+		
+		
+		<table ng-repeat="name in student|filter:fname">
+			
+			<tr >
+				<td>Student Name</td> 
+				<td>{{name.fname+" "+name.lname}}</td>
+			</tr>
+			<tr>
+				<td>Student Marks</td> 
+				
+				<td>
+					<table>
+						<tr>
+                        	<th ng-click="myOrderBy('name')">Name</th>
+                        	<th ng-click="myOrderBy('marks')">Marks</th>
+                     	</tr>
+                     	<tr ng-repeat="subject in name.subjects|orderBy:orderByMe">
+                     		<td>{{subject.name}}</td>
+                     		<td>{{subject.marks}}</td>
+                     	</tr>
+                     	<tr>
+                			<td>Percentage Marks</td>
+                    		<td>{{calcPercent(name.subjects)}}</td>
+                		</tr>	
+                     	
+					
+					</table>
+				
+				</td>
+			</tr>
+			
+		</table>
+		
+		
+	</div>
+</body>
+</html>
