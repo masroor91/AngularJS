@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+
+<style type="text/css">
+	table, th, td {
+		border: 1px solid grey;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	
+	table tr:nth-child(odd) {
+		background-color: #f2f2f2;
+	}
+	table tr:nth-child(even) {
+		background-color: white;
+	}
+
+</style>
+
+
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app =  angular.module('myApp', []);
+	
+	app.filter('myFilter', function(){
+		
+		return function(x) {
+			var c, txt="";
+			
+			for (var i = 0; i< x.length; i++) {
+				c=x[i];
+				if (i%2==0) {
+					c=c.toUpperCase();
+				}
+
+				txt+=c;
+			}
+			return txt;
+		};
+		
+	});
+
+	
+	app.controller('myController', ['$rootScope',function($scope){
+		$scope.names = ['Jani', 'Carl', 'Margareth', 'Hege',  'Joe', 'Gustav', 'Birgit', 'Mary', 'Kai'];
+	
+	}]);
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" >
+		<table ng-controller="myController">
+			<tr>
+				<th>Names</th>
+			</tr>
+			<tr ng-repeat="x in names">
+				<td>{{x|myFilter}}</td>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>
