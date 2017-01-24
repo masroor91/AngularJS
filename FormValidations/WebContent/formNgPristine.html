@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+	form.ng-pristine {
+		background-color: lightblue;
+	}
+	
+	form.ng-dirty{
+		background-color: pink;
+	}
+</style>
+
+
+<script src="lib/angular.min.js"></script>
+
+
+  
+<body ng-app="">
+
+<h1>Try writing in the input field</h1>
+
+<form name="myForm">
+	
+	<pre>
+	Name:	<input type="text" name="name" ng-model="name" required="required">
+	</pre>
+</form>
+
+</body>
+</html>

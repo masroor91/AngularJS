@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app= angular.module('myApp',[]);
+	app.controller('myController', function($scope) {
+		$scope.cars = {
+				car01 : {brand : "Ford", model : "Mustang", color : "red"},
+				car02 : {brand : "Fiat", model : "500", color : "white"},
+				car03 : {brand : "Volvo", model : "XC90", color : "black"}
+				};
+
+	})
+
+</script>
+
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+			<select ng-model="selectedCar" ng-options="y.brand for (x,y) in cars"></select>
+			
+			<h3>Hi!! You have selected: {{selectedCar.brand}} </h3>
+			<p>Model:<strong>{{selectedCar.model}}</strong></p>
+			<p>Color:<strong>{{selectedCar.color}}</strong></p>
+		</pre>
+	</div>
+
+
+</body>
+</html>

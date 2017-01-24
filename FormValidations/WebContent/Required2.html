@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+	span {
+		color: red;
+	}
+
+
+</style>
+
+
+<script src="lib/angular.min.js"></script>
+
+
+  
+<body ng-app="">
+
+<h1>Try writing in the input field</h1>
+
+<form name="myForm">
+	
+	<pre>
+	Name: <input name="name" ng-model="name" required>
+	<span ng-show="myForm.name.$error.required">Name is required</span>
+	
+	Address: <input name="address" ng-model="address" required>
+	<span ng-show="myForm.address.$error.required">Address is required</span>
+	</pre>
+</form>
+
+</body>
+</html>

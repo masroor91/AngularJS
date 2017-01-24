@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app= angular.module('myApp',[]);
+	app.controller('myController', function($scope) {
+		$scope.cars = [
+		               {model : "Ford Mustang", color :  "red"},
+		               {model : "Fiat 500", color : "white"},
+		                {model : "Volvo XC90", color : "black"}
+		              ];
+
+	})
+
+</script>
+
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+			<h3>Using ng-options to select a object</h3>
+			<select ng-model="selectedCar" ng-options="x.model for x in cars"></select>
+			
+			<p>You selected <strong>{{selectedCar.model}}</strong> and its color as <strong>{{selectedCar.color}}</strong></p>
+		
+		</pre>
+		<br/><br/>	
+		
+		<pre>
+			<h3>Using ng-repeat to select a String</h3>	
+			<select ng-model="carmodel">
+				<option>--Select one--</option>
+				<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
+			</select>
+			<select ng-model="carcolor">
+				<option>--Select one--</option>
+				<option ng-repeat="x in cars" value="{{x.color}}">{{x.color}}</option>
+			</select>
+			<p>You selected <strong>{{carmodel}}</strong> and its color as <strong>{{carcolor}}</strong></p>
+		</pre>
+	</div>
+
+
+</body>
+</html>

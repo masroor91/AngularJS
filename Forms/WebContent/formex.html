@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app= angular.module('myApp', [])
+	app.controller('myController', function($scope) {
+		$scope.master={fname:"John", lname:"Cena"};
+		
+		$scope.reset= function() {
+			$scope.user= angular.copy($scope.master);
+		};
+		$scope.reset();
+	});
+
+</script>
+
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<form >
+		<pre>
+		First Name: <input type="text" ng-model="user.fname">
+		Last Name: <input type="text" ng-model="user.lname">
+		<br/><br/>
+		<button ng-click="reset()">Reset</button>
+		<br/>
+		<p>Form data: {{user}}</p>
+		<p>Master data: {{master}}</p>
+		</pre>
+	</form>
+</body>
+</html>

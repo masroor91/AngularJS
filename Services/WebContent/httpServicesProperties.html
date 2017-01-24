@@ -20,22 +20,28 @@
 	}
 </style>
 
-<script type="text/javascript" src="lib/angular.min.js"></script>
+<script src="lib/angular.min.js"></script>
 
 <script type="text/javascript">
 	
 	var app= angular.module('myApp',[]);
 	
 	app.controller('myController', function($scope, $http) {
-		$http({method:"GET", url:"welcome.htm"}).then( function(response) {
+		$http({method:"GET", url:"welcome.htm"}).then ( function(response) {
+			
 			$scope.content=response.data;
 			$scope.statuscode=response.status;
 			$scope.statusText=response.statusText;
+			$scope.block="True Block";
+			
 		}, function(response) {
-			$scope.content="Page Could not be Found";
+			
+			$scope.content="No Such file exists";
 			$scope.statuscode=response.status;
 			$scope.statusText=response.statusText;
+			$scope.block="False Block";
 		});
+		
 	});
 
 </script>
@@ -48,11 +54,13 @@
 				<th>Data</th>
 				<th>Status</th>
 				<th>StatusText</th>
+				<th>Block</th>
 			</tr>
 			<tr>
 				<td>{{content}}</td>
 				<td>{{statuscode}}</td>
 				<td>{{statusText}}</td>
+				<td>{{block}}</td>
 			</tr>
 		</table>
 	</div>

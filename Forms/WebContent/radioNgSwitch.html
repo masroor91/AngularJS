@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+</head>
+<body ng-app="">
+	
+	<form>
+		Pick a topic to choose:
+		<input type="radio" ng-model="myVar" value="Dogs">Dogs
+		<input type="radio" ng-model="myVar" value="Tuts">Tuts
+		<input type="radio" ng-model="myVar" value="Cars">Cars
+	
+	</form>
+	
+	<div ng-switch="myVar">
+		<div ng-switch-when="Dogs">
+			<h1>Dogs</h1>
+			<p>Welcome to the world of Dogs</p>
+		</div>
+		<div ng-switch-when="Tuts">
+			<h1>Tuts</h1>
+			<p>Welcome to the world of Tuts</p>
+		</div>
+		<div ng-switch-when="Cars">
+			<h1>Cars</h1>
+			<p>Welcome to the world of Cars</p>
+		</div>
+	</div>
+	
+</body>
+</html>

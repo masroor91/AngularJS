@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<script src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+
+	var app= angular.module('myApp',[]);
+	app.directive('myDirective', function() {   //to be used as ng-directive
+		return{
+			require: 'ngModel',	
+			link: function(scope, element, attr, mCtrl) { //mCtrl is ngModelController
+				function myValidation(value) {    //value is text entered in textbox
+					if (value.indexOf("e") > -1) {
+						mCtrl.$setValidity('charE', true);
+					}
+					else{
+						mCtrl.$setValidity('charE', false);
+					}
+					return value;
+				}
+			
+				mCtrl.$parsers.push(myValidation);
+			}
+			
+		};
+	});
+
+</script>
+  
+<body ng-app="myApp">
+
+<h1>Try writing in the input field</h1>
+
+<form name="myForm">
+	
+	<pre>
+	Name:	<input type="text" name="name" ng-model="name" required my-directive>
+	
+	<p>Input's valid state is: </p>
+	<p>{{myForm.name.$valid}}</p>
+	</pre>
+</form>
+
+</body>
+</html>

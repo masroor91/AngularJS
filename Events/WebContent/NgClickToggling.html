@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+
+<style type="text/css">
+	
+	table, td, th {
+		border: 1px solid gray;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	
+	table tr:nth-child(odd) {
+		background-color: #f2f2f2;
+	}
+	table tr:nth-child(even) {
+		background-color: #ffffff;
+	}
+
+
+</style>
+
+
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('myApp',[]);
+	app.controller('myController', function($scope) {
+		$scope.flag=false;
+		
+		$scope.myFunc= function() {
+			$scope.flag=!$scope.flag;
+		}
+	})
+</script>
+
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		
+		<button ng-click="myFunc()">Click</button>
+		<br/><br/>
+		<table ng-show=flag>
+			<tr>
+				<th>Menu</th>
+			</tr>
+			<tr>
+				<td>Pizza</td>
+			</tr>
+			<tr>
+				<td>Pasta</td>
+			</tr>
+			<tr>
+				<td>Pesce</td>
+			</tr>
+		
+		</table>
+	</div>
+
+
+</body>
+</html>
