@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	var app=angular.module('myApp',[]);
+	
+	app.run(function($rootScope){
+		$rootScope.color='blue';
+	});
+	
+	app.controller('myController',['$scope',function($scope){
+		$scope.color='red';
+		
+	}]);
+	
+</script >
+
+</head>
+<body ng-app="myApp">
+	<p>RootScope color</p>
+	<h1>{{color}}</h1>
+
+	<div ng-controller="myController">
+		<pre>
+		<p>scope color defined by Controller</p>
+		<h1>{{color}}</h1>	
+		</pre>
+	</div>
+
+	<p>RootScope color</p>
+	<h1>{{color}}</h1>
+
+</body>
+</html>

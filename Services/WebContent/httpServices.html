@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app= angular.module('myApp',[]);
+	
+	app.controller('myController', function($scope, $http) {
+		$http.get("welcome.htm").then (function(response) {
+			$scope.myWelcome=response.data;
+		});
+	});
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+			<h1>Todays Welcome Message is </h1>
+			<h3>{{myWelcome}}</h3>
+		</pre>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+
+<style type="text/css">
+
+	table, th, td {
+		border: 1px solid gray;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	
+	table tr:nth-child(odd) {
+		background-color: #f2f2f2;
+	}
+	table tr:nth-child(even) {
+		background-color: white;
+	}
+</style>
+
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app= angular.module('myApp',[]);
+	
+	app.controller('myController', function($scope, $http) {
+		$http({method:"GET", url:"customers.html"}).then( function(response) {
+			$scope.flag=false;
+			$scope.myData=response.data.records;
+			
+		}, function(response) {
+			$scope.flag=true;
+			$scope.myData="No such file present";
+			
+		});
+	});
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController" ng-init="flag=true">
+		<table ng-hide="flag">
+			<tr>
+				<th>Name</th>
+				<th>Country</th>
+			</tr>
+			<tr ng-repeat="x in myData">
+				<td>{{x.Name}}</td>
+				<td>{{x.Country}}</td>
+			</tr>
+		</table>
+		
+		<p ng-show="flag">{{myData}}</p>
+	</div>
+
+
+</body>
+</html>

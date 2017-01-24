@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app= angular.module('myApp',[]);
+	
+	app.controller('myController', function($scope, $location) {
+		$scope.myUrl=$location.absUrl();
+	})
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+			<h1>Absolute URL of this Page using $location service</h1>
+			<h3>{{myUrl}}</h3>
+		</pre>
+	</div>
+
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 var app= angular.module('myApp',[]);
+
 app.controller('stuController',['$scope',function($scope){
 	$scope.student=[{fname:"Mahesh", lname:"Kumar", fees:500,
 					 subjects:[{name:"Physics", marks:70},
@@ -23,10 +24,8 @@ app.controller('stuController',['$scope',function($scope){
 	                
 	                ];
 	
-		$scope.fullname=function(){
-			var stuObj;
-			stuObj=$scope.student;
-			return stuObj.fname+" "+stuObj.lname;
+		$scope.fullname=function(stu){
+			return stu.fname+" "+stu.lname;
 		};
 		
 		$scope.calcPercent=function(subs){

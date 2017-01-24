@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app= angular.module('myApp',[]);
+	
+	app.service('hexafy', function() {
+		this.myFunc= function(x) {
+			return x.toString(16);	
+		};
+	});
+	
+	app.controller('myController', function($scope, hexafy) {
+		$scope.hex=hexafy.myFunc(255);
+	})
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+			<h1>A custom service with a method that converts a given number into a hexadecimal number.</h1>
+			<h3>{{hex}}</h3>
+		</pre>
+	</div>
+
+
+</body>
+</html>

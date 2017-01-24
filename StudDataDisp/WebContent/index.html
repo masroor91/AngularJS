@@ -7,7 +7,7 @@
          table, th , td {
             border: 1px solid grey;
             border-collapse: collapse;
-            padding: 5px;
+            padding: 5x;
          }
          
          table tr:nth-child(odd) {
@@ -17,7 +17,7 @@
          table tr:nth-child(even) {
             background-color: #ffffff;
          }
-    </style>
+  </style>
       
     <script src="lib/angular.min.js"></script>
     
@@ -49,7 +49,7 @@
 			
 			<tr >
 				<td>Student Name</td> 
-				<td>{{name.fname+" "+name.lname}}</td>
+				<td>{{fullname(name)}}</td>
 			</tr>
 			<tr>
 				<td>Student Marks</td> 
@@ -76,8 +76,6 @@
 			</tr>
 			
 		</table>
-		
-		
 	</div>
 </body>
 </html>

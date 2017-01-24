@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+
+<style type="text/css">
+
+	table, th, td {
+		border: 1px solid gray;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	
+	table tr:nth-child(odd) {
+		background-color: #f2f2f2
+	}
+	table tr:nth-child(even) {
+		background-color: white
+	}
+</style>
+
+<script type="text/javascript" src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+	
+	var app= angular.module('myApp',[]);
+	
+	app.controller('myController', function($scope, $http) {
+		$http({method:"GET", url:"welcome.htm"}).then( function(response) {
+			$scope.content=response.data;
+			$scope.statuscode=response.status;
+			$scope.statusText=response.statusText;
+		}, function(response) {
+			$scope.content="Page Could not be Found";
+			$scope.statuscode=response.status;
+			$scope.statusText=response.statusText;
+		});
+	});
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<table>
+			<tr>
+				<th>Data</th>
+				<th>Status</th>
+				<th>StatusText</th>
+			</tr>
+			<tr>
+				<td>{{content}}</td>
+				<td>{{statuscode}}</td>
+				<td>{{statusText}}</td>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>
