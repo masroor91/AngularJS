@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+<script src="lib/angular.min.js"></script>
+
+<script type="text/javascript">
+
+	var app= angular.module('myApp', []);
+	app.controller('myController', function($scope) {
+		$scope.fname='Masroor';
+		$scope.lname='ALAM';
+		
+		$scope.uc=angular.uppercase($scope.fname);
+		$scope.lc=angular.lowercase($scope.lname);
+		$scope.isStr=angular.isString($scope.fname);
+		$scope.isNum=angular.isNumber($scope.fname);
+	
+		
+	});
+
+</script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myController">
+		<pre>
+		First name: {{fname}}
+		Last Name: {{lname}}
+		angular.uppercase(): {{uc}}
+		angular.lowercase(): {{lc}} 
+		angular.isString(): {{isStr}}
+		angular.isNumber(): {{isNum}}
+		
+		</pre>
+	</div>
+
+
+</body>
+</html>
